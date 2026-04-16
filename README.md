@@ -1,28 +1,60 @@
-# Abhinav Verma — Portfolio
+# Abhinav Verma — Portfolio Website
 
-## How to Deploy on Netlify
+A clean, dark-themed personal portfolio built with pure HTML, CSS, and JavaScript. No frameworks, no build tools — just drop it on GitHub Pages and go live instantly.
 
-### Option 1: Drag & Drop (Easiest — No GitHub needed)
-1. Go to https://app.netlify.com
-2. Sign up / log in (free)
-3. On the dashboard, find the **"Add new site"** → **"Deploy manually"** section
-4. Drag and drop this entire **`abhinav-portfolio`** folder onto the page
-5. Done! Netlify gives you a live URL instantly (e.g. `https://random-name.netlify.app`)
-6. To set a custom name: Site settings → General → Change site name
+## 🚀 Deploy to GitHub Pages (5 minutes)
 
-### Option 2: Deploy via GitHub (Recommended for auto-updates)
-1. Create a new repo on https://github.com/new (e.g. `my-portfolio`)
-2. Upload the files (index.html, resume.pdf) to the repo
-3. Go to https://app.netlify.com → "Add new site" → "Import an existing project"
-4. Connect GitHub → Select your repo
-5. Build settings: leave blank (no build command needed for plain HTML)
-6. Click **Deploy site**
-7. Every time you push to GitHub, Netlify auto-redeploys!
+1. Create a new GitHub repository named exactly: `yourusername.github.io`  
+   *(Replace `yourusername` with your actual GitHub username)*
 
-### Custom Domain (Optional)
-- In Netlify: Site settings → Domain management → Add custom domain
-- Point your domain's DNS to Netlify's nameservers
+2. Upload all files from this zip into that repository.
 
-### Notes
-- `resume.pdf` must stay in the same folder as `index.html` for the download button to work
-- The contact form is UI-only; to make it functional connect Netlify Forms or EmailJS
+3. Go to **Settings → Pages → Source → Deploy from branch → main → / (root)**
+
+4. Your site will be live at: `https://yourusername.github.io`
+
+## 📁 File Structure
+
+```
+portfolio/
+├── index.html        ← Main portfolio page (edit this)
+├── resume.pdf        ← Add your resume PDF here (for download button)
+└── README.md         ← This file
+```
+
+## ✏️ How to Customize
+
+### Update your GitHub links
+Search for `abhinav09072002` in `index.html` and replace with your actual GitHub username.
+
+### Update your LinkedIn
+Search for `abhinavverma09` and replace with your LinkedIn handle.
+
+### Add your resume PDF
+Place your `resume.pdf` file in the same folder as `index.html`.  
+The "Download Resume" button will automatically serve it.
+
+### Update project links
+Find each `project-links` section and add your real GitHub repo URLs.
+
+### Change your name or info
+All personal details are in `index.html` — search and replace as needed.
+
+## 🎨 Tech Stack
+
+- Pure HTML5, CSS3, Vanilla JavaScript
+- Google Fonts (DM Serif Display, DM Sans, JetBrains Mono)
+- Zero dependencies — works offline after first load
+- Mobile responsive
+- Smooth scroll + fade-in animations
+- ATS-compatible resume download
+
+## 📬 Contact Form
+
+The contact form currently shows a success state on submit but doesn't send emails (no backend). To wire it up:
+- Use [Formspree](https://formspree.io) — free, just change the form `action` attribute
+- Or use [EmailJS](https://emailjs.com) with a small JS snippet
+
+## License
+
+Free to use and modify for personal portfolios.
