@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Abhinav Verma — Developer & ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;
+  --bg2:#111111;
+  --bg3:#1a1a1a;
+  --border:#2a2a2a;
+  --text:#f0ede8;
+  --muted:#6b6860;
+  --accent:#c8f547;
+  --accent2:#7c6af5;
+  --serif:'DM Serif Display',serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* ── LOADER ── */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease .3s,visibility .6s ease .3s}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-text{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.1em;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:border-color .3s,background .3s,backdrop-filter .3s}
+nav.scrolled{border-color:var(--border);background:rgba(10,10,10,.85);backdrop-filter:blur(20px)}
+.nav-logo{font-family:var(--serif);font-size:1.3rem;color:var(--text);text-decoration:none;letter-spacing:.02em}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.875rem;letter-spacing:.05em;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--accent);color:#000;padding:.5rem 1.25rem;border-radius:2rem;font-size:.875rem;font-weight:500;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:24px;height:1.5px;background:var(--text);display:block;transition:.3s}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 70% 50%,rgba(124,106,245,.12) 0%,transparent 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1200px;margin:0 auto;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.75rem;color:var(--accent);letter-spacing:.1em;background:rgba(200,245,71,.08);border:1px solid rgba(200,245,71,.2);padding:.35rem .85rem;border-radius:2rem;margin-bottom:1.5rem}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+h1.hero-name{font-family:var(--serif);font-size:clamp(3rem,7vw,6rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:.75rem}
+h1.hero-name em{font-style:italic;color:var(--accent2)}
+.hero-title{font-size:1.1rem;color:var(--muted);font-weight:300;margin-bottom:1rem}
+.hero-tagline{font-size:1.15rem;line-height:1.65;max-width:480px;margin-bottom:2.5rem;color:rgba(240,237,232,.8)}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#000;padding:.75rem 1.75rem;border-radius:2rem;font-weight:500;text-decoration:none;font-size:.9rem;transition:transform .2s,opacity .2s}
+.btn-primary:hover{transform:translateY(-2px);opacity:.9}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:.75rem 1.75rem;border-radius:2rem;font-weight:400;text-decoration:none;font-size:.9rem;transition:border-color .2s,background .2s}
+.btn-outline:hover{border-color:var(--muted);background:var(--bg3)}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.avatar-ring{width:320px;height:320px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative}
+.avatar-ring::before{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0%,var(--accent2) 30%,var(--accent) 60%,transparent 70%);animation:spin 8s linear infinite;opacity:.4}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar-inner{width:290px;height:290px;border-radius:50%;background:var(--bg3);overflow:hidden;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);position:relative;z-index:1}
+.avatar-initials{font-family:var(--serif);font-size:5rem;color:var(--text);opacity:.9;font-style:italic}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)}
+.stat{text-align:center}
+.stat-num{font-family:var(--serif);font-size:1.8rem;color:var(--accent);display:block}
+.stat-label{font-size:.75rem;color:var(--muted);letter-spacing:.05em}
+
+/* ── SECTION BASE ── */
+section{padding:6rem 3rem;max-width:1200px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;color:var(--accent);text-transform:uppercase;margin-bottom:.75rem}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:1rem}
+.section-sub{color:var(--muted);font-size:1rem;max-width:520px;line-height:1.7;margin-bottom:3rem}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-text p{color:rgba(240,237,232,.75);line-height:1.85;margin-bottom:1.25rem;font-size:1.025rem}
+.about-cards{display:flex;flex-direction:column;gap:1rem}
+.about-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;transition:border-color .2s}
+.about-card:hover{border-color:var(--accent2)}
+.about-card-icon{font-size:1.3rem;margin-bottom:.5rem}
+.about-card h4{font-size:.9rem;font-weight:500;margin-bottom:.25rem}
+.about-card p{font-size:.825rem;color:var(--muted);line-height:1.6;margin:0}
+
+/* ── SKILLS ── */
+#skills{background:var(--bg2);max-width:none;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+#skills .inner{max-width:1200px;margin:0 auto;padding:0}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:0}
+.skill-group{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:1.75rem}
+.skill-group h3{font-size:.8rem;font-family:var(--mono);letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:1.25rem}
+.skill-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.pill{background:var(--bg2);border:1px solid var(--border);color:rgba(240,237,232,.75);padding:.3rem .75rem;border-radius:2rem;font-size:.8rem;font-family:var(--mono);transition:background .2s,border-color .2s,color .2s}
+.pill:hover{background:rgba(124,106,245,.15);border-color:var(--accent2);color:var(--text)}
+
+/* ── EXPERIENCE ── */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:3rem}
+.tl-dot{position:absolute;left:-2.4rem;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent2);border:2px solid var(--bg)}
+.tl-company{display:flex;align-items:baseline;gap:1rem;margin-bottom:.25rem}
+.tl-company h3{font-size:1.1rem;font-weight:500}
+.tl-role{font-size:.825rem;color:var(--muted);font-family:var(--mono)}
+.tl-item ul{list-style:none;margin-top:.75rem}
+.tl-item ul li{position:relative;padding-left:1.25rem;color:rgba(240,237,232,.7);font-size:.9rem;line-height:1.75;margin-bottom:.35rem}
+.tl-item ul li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:.75rem;top:.1rem}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.project-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+.project-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 0%,rgba(124,106,245,.07) 0%,transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}
+.project-card:hover{border-color:var(--accent2);transform:translateY(-4px)}
+.project-card:hover::before{opacity:1}
+.project-num{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.1em;margin-bottom:.75rem}
+.project-card h3{font-size:1.15rem;font-weight:500;margin-bottom:.5rem;line-height:1.3}
+.project-card p{color:var(--muted);font-size:.875rem;line-height:1.7;margin-bottom:1.25rem}
+.project-stack{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem}
+.stack-tag{font-family:var(--mono);font-size:.7rem;color:var(--accent);background:rgba(200,245,71,.07);border:1px solid rgba(200,245,71,.15);padding:.2rem .6rem;border-radius:.25rem}
+.project-links{display:flex;gap:1rem}
+.project-links a{font-size:.8rem;color:var(--muted);text-decoration:none;font-family:var(--mono);letter-spacing:.05em;transition:color .2s}
+.project-links a:hover{color:var(--text)}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:0}
+.edu-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color .2s}
+.edu-card:hover{border-color:var(--accent)}
+.edu-year{font-family:var(--mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.5rem}
+.edu-card h3{font-size:.95rem;font-weight:500;line-height:1.4;margin-bottom:.35rem}
+.edu-card p{font-size:.825rem;color:var(--muted)}
+.edu-grade{display:inline-block;margin-top:.75rem;font-family:var(--mono);font-size:.75rem;background:rgba(200,245,71,.08);color:var(--accent);padding:.2rem .6rem;border-radius:.25rem;border:1px solid rgba(200,245,71,.15)}
+
+/* ── CERTS ── */
+.certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:0}
+.cert-card{display:flex;align-items:center;gap:1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;transition:border-color .2s}
+.cert-card:hover{border-color:var(--accent2)}
+.cert-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.cert-icon.aws{background:rgba(255,153,0,.1)}
+.cert-icon.nptel{background:rgba(124,106,245,.1)}
+.cert-body h4{font-size:.9rem;font-weight:500;margin-bottom:.2rem}
+.cert-body p{font-size:.8rem;color:var(--muted)}
+
+/* ── ACHIEVEMENTS ── */
+.ach-list{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:0}
+.ach-item{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;transition:border-color .2s}
+.ach-item:hover{border-color:var(--accent)}
+.ach-bullet{width:32px;height:32px;border-radius:8px;background:rgba(200,245,71,.08);border:1px solid rgba(200,245,71,.15);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;margin-top:.1rem}
+.ach-item p{font-size:.875rem;color:rgba(240,237,232,.75);line-height:1.6}
+
+/* ── CONTACT ── */
+#contact{background:var(--bg2);max-width:none;border-top:1px solid var(--border)}
+#contact .inner{max-width:1200px;margin:0 auto;padding:0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-info h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:1rem}
+.contact-info p{color:var(--muted);line-height:1.75;margin-bottom:2rem;font-size:.95rem}
+.contact-links{display:flex;flex-direction:column;gap:.75rem}
+.contact-link{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--text);padding:.75rem 1rem;background:var(--bg3);border:1px solid var(--border);border-radius:10px;font-size:.9rem;transition:border-color .2s}
+.contact-link:hover{border-color:var(--accent2)}
+.contact-link-icon{width:36px;height:36px;border-radius:8px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);font-family:var(--mono);letter-spacing:.05em;margin-bottom:.4rem}
+.form-group input,.form-group textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;color:var(--text);font-family:var(--sans);font-size:.9rem;outline:none;resize:none;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--accent2)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--muted)}
+.form-submit{background:var(--accent);color:#000;border:none;padding:.85rem 2rem;border-radius:2rem;font-weight:500;font-size:.9rem;cursor:pointer;transition:opacity .2s,transform .2s;font-family:var(--sans);align-self:flex-start}
+.form-submit:hover{opacity:.85;transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.8rem;color:var(--muted)}
+.footer-socials{display:flex;gap:1.5rem}
+.footer-socials a{font-size:.8rem;font-family:var(--mono);color:var(--muted);text-decoration:none;letter-spacing:.05em;transition:color .2s}
+.footer-socials a:hover{color:var(--text)}
+
+/* ── DIVIDER ── */
+.divider{width:100%;height:1px;background:var(--border);margin:0 auto}
+
+/* ── FADE-IN ── */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1.5rem;gap:1.25rem}
+  #hero{padding:7rem 1.5rem 4rem}
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem;text-align:center}
+  .hero-visual{order:-1}
+  .hero-tagline{margin:0 auto 2rem}
+  .hero-btns{justify-content:center}
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  section{padding:4rem 1.5rem}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2rem}
+  .skills-grid,.projects-grid,.edu-grid,.certs-grid,.ach-list{grid-template-columns:1fr}
+  .avatar-ring{width:220px;height:220px}
+  .avatar-inner{width:196px;height:196px}
+  .avatar-initials{font-size:3.5rem}
+  footer{padding:1.5rem;flex-direction:column;text-align:center}
+  #skills,#contact{padding:4rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <span class="loader-text">initializing portfolio_</span>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">AV</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cta" onclick="downloadResume()">Resume ↓</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag">Available for opportunities</div>
+      <h1 class="hero-name">Abhinav<br/><em>Verma</em></h1>
+      <p class="hero-title">Full Stack Developer &amp; ML Engineer</p>
+      <p class="hero-tagline">Building intelligent systems and crafting digital experiences — from RAG-powered models to responsive web apps that scale.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary" onclick="downloadResume();return false;">Download Resume ↓</a>
+        <a href="#contact" class="btn-outline">Get in touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">4+</span><span class="stat-label">Companies</span></div>
+        <div class="stat"><span class="stat-num">4+</span><span class="stat-label">Projects</span></div>
+        <div class="stat"><span class="stat-num">400+</span><span class="stat-label">DSA Problems</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+          <span class="avatar-initials">AV</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label fade-up">01 / About</div>
+  <h2 class="section-title fade-up">The person<br/><em style="font-family:var(--serif);font-style:italic;color:var(--accent2)">behind the code</em></h2>
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <p>I'm a graduate in Electrical and Electronics Engineering from R.V. College of Engineering, Bangalore — but my passion has always lived at the intersection of software, data, and intelligent systems.</p>
+      <p>At Tektronix, I engineered PCIe signal solutions and built modern web apps. At a stealth startup, I architected full-stack ML applications with RAG pipelines and vector databases. At AstilbePage, I built an AI-powered newsletter platform with LLM routing and production-ready UI. Every project I take on, I bring the same obsession with craft.</p>
+      <p>Beyond code, I'm a writer, actor, and street play performer — having staged shows across Bangalore and India. I believe great engineers are also great communicators, and I bring that clarity to everything I build.</p>
+      <p>Currently looking for full-time roles in software engineering, ML engineering, or full-stack development where I can build things that matter.</p>
+    </div>
+    <div class="about-cards fade-up">
+      <div class="about-card">
+        <div class="about-card-icon">⚡</div>
+        <h4>Full-Stack Engineering</h4>
+        <p>React, Django, Spring Boot — end-to-end systems from UI to database, built for scale and maintainability.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🧠</div>
+        <h4>ML & AI Systems</h4>
+        <p>RAG pipelines, LLMs, Random Forest, vector databases — turning data into intelligent, actionable products.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🎭</div>
+        <h4>Creative Communicator</h4>
+        <p>Writer, actor, and performer. NTSE qualifier. Best outgoing student. I bring creative energy to technical problems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+<div class="inner">
+  <div class="section-label fade-up">02 / Skills</div>
+  <h2 class="section-title fade-up">Technical<br/><em style="font-family:var(--serif);font-style:italic;color:var(--accent2)">arsenal</em></h2>
+  <p class="section-sub fade-up">A broad toolkit built across academic projects, internships, and self-directed learning.</p>
+  <div class="skills-grid fade-up">
+    <div class="skill-group">
+      <h3>Languages</h3>
+      <div class="skill-pills">
+        <span class="pill">Python</span><span class="pill">C++</span><span class="pill">JavaScript</span><span class="pill">Java</span><span class="pill">C</span><span class="pill">C#</span><span class="pill">SQL</span><span class="pill">HTML</span><span class="pill">CSS</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Frameworks &amp; Libraries</h3>
+      <div class="skill-pills">
+        <span class="pill">ReactJS</span><span class="pill">Spring Boot</span><span class="pill">Node.js</span><span class="pill">Django</span><span class="pill">DRF</span><span class="pill">NumPy</span><span class="pill">Pandas</span><span class="pill">Plotly</span><span class="pill">Matplotlib</span><span class="pill">scikit-learn</span><span class="pill">TensorFlow</span><span class="pill">PySpark</span><span class="pill">Angular</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Tools &amp; Platforms</h3>
+      <div class="skill-pills">
+        <span class="pill">MongoDB</span><span class="pill">PostgreSQL</span><span class="pill">Pinecone</span><span class="pill">AWS S3</span><span class="pill">RAG</span><span class="pill">LLM</span><span class="pill">OpenAI API</span><span class="pill">Power BI</span><span class="pill">MATLAB</span><span class="pill">Simulink</span><span class="pill">Keil</span><span class="pill">Proteus</span><span class="pill">Photoshop</span><span class="pill">Visual Studio .NET</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label fade-up">03 / Experience</div>
+  <h2 class="section-title fade-up">Where I've<br/><em style="font-family:var(--serif);font-style:italic;color:var(--accent2)">contributed</em></h2>
+  <div class="timeline fade-up" style="margin-top:2rem">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-company">
+        <h3>Stealth</h3>
+        <span class="tl-role">Application Developer (ML)</span>
+      </div>
+      <ul>
+        <li>Built compliance-focused agentic AI platform using RAG (OpenAI, Pinecone) for context-aware responses.</li>
+        <li>Developed secure frontend (React, ShadCN) with user interaction flows.</li>
+        <li>Designed scalable backend (Node.js, MongoDB, S3) with vector-based retrieval and storage.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-company">
+        <h3>Tektronix</h3>
+        <span class="tl-role">Software Engineer</span>
+      </div>
+      <ul>
+        <li>Automated PCIe PLL bandwidth testing using Python &amp; Selenium, replacing costly BERT with AWG-based solution for R&amp;D.</li>
+        <li>Implemented AWG-based signal generation &amp; filtering integrated with Tektronix RX via VM for test execution.</li>
+        <li>Designed full-stack PLL test platform (.NET backend, Angular frontend) for validation, data collection, and analysis.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-company">
+        <h3>AstilbePage</h3>
+        <span class="tl-role">Software Engineer</span>
+      </div>
+      <ul>
+        <li>Built AI newsletter platform (React, Node, MongoDB) with JWT auth &amp; dashboard.</li>
+        <li>Implemented waitlist/email automation (rate limit, admin, CSV, Node Mailer); deployed on Render/Atlas.</li>
+        <li>Engineered intent-based LLM routing (Mistral-7B) with fallback logic.</li>
+        <li>Designed a production-ready dark-theme UI with animated React components, AI chat (session history), and markdown rendering.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-company">
+        <h3>Clinify</h3>
+        <span class="tl-role">Community Manager</span>
+      </div>
+      <ul>
+        <li>Coordinated online events to drive engagement and foster meaningful connections among community members.</li>
+        <li>Facilitated collaboration between the development team and community stakeholders.</li>
+        <li>Organized singing, coding, and design contests to nurture creativity within the community.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label fade-up">04 / Projects</div>
+  <h2 class="section-title fade-up">Things I've<br/><em style="font-family:var(--serif);font-style:italic;color:var(--accent2)">built</em></h2>
+  <div class="projects-grid fade-up" style="margin-top:2rem">
+
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <h3>Know BTC — OHLC Analysis</h3>
+      <p>Processed and analyzed Bitcoin OHLC data with candlestick visualizations to identify price patterns and trends. Applied XGBoost and Random Forest for price prediction, with feature engineering and evaluation using RMSE, R².</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">NumPy</span><span class="stack-tag">Pandas</span><span class="stack-tag">Plotly</span><span class="stack-tag">Matplotlib</span><span class="stack-tag">XGBoost</span><span class="stack-tag">scikit-learn</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/abhinav09072002" target="_blank">↗ GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <h3>Predict-or — Stock Price Predictor</h3>
+      <p>Preprocessed financial time-series data and implemented Random Forest and LSTM models for price prediction, achieving ~98.6% and ~98.9% accuracy respectively. LSTM outperformed RF on sequential trends.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">NumPy</span><span class="stack-tag">Pandas</span><span class="stack-tag">Plotly</span><span class="stack-tag">Matplotlib</span><span class="stack-tag">scikit-learn</span><span class="stack-tag">TensorFlow</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/abhinav09072002" target="_blank">↗ GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03</div>
+      <h3>Book Matchmaker</h3>
+      <p>Implemented popularity-based and collaborative filtering recommendation models using user ratings and book metadata. Designed a responsive web interface for interactive book recommendations with similarity metrics.</p>
+      <div class="project-stack">
+        <span class="stack-tag">HTML</span><span class="stack-tag">CSS</span><span class="stack-tag">JS</span><span class="stack-tag">Python</span><span class="stack-tag">NumPy</span><span class="stack-tag">Pandas</span><span class="stack-tag">Plotly</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/abhinav09072002" target="_blank">↗ GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">04</div>
+      <h3>Campus Wave — College Management System</h3>
+      <p>Built college management system with React frontend and Django REST API backend. Implemented RESTful CRUD operations for students, courses, and professors using Axios, with PostgreSQL for performance &amp; scalability.</p>
+      <div class="project-stack">
+        <span class="stack-tag">React</span><span class="stack-tag">Axios</span><span class="stack-tag">Django</span><span class="stack-tag">DRF</span><span class="stack-tag">PostgreSQL</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/abhinav09072002" target="_blank">↗ GitHub</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label fade-up">05 / Education</div>
+  <h2 class="section-title fade-up">Academic<br/><em style="font-family:var(--serif);font-style:italic;color:var(--accent2)">foundation</em></h2>
+  <div class="edu-grid fade-up" style="margin-top:2rem">
+    <div class="edu-card">
+      <div class="edu-year">2020 – 2024</div>
+      <h3>RV College of Engineering, Bangalore</h3>
+      <p>B.E. — Electrical &amp; Electronics Engineering</p>
+      <span class="edu-grade">CGPA: 7.75</span>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2018 – 2019</div>
+      <h3>Guru Nanak Public School</h3>
+      <p>CBSE — Class XII</p>
+      <span class="edu-grade">87.4%</span>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2016 – 2017</div>
+      <h3>B.N.S.D Shiksha Niketan Inter College</h3>
+      <p>U.P. Board — Class X</p>
+      <span class="edu-grade">91.6%</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTS -->
+<section id="certifications">
+  <div class="section-label fade-up">06 / Certifications</div>
+  <h2 class="section-title fade-up">Courses &amp;<br/><em style="font-family:var(--serif);font-style:italic;color:var(--accent2)">credentials</em></h2>
+  <div class="certs-grid fade-up" style="margin-top:2rem">
+    <div class="cert-card">
+      <div class="cert-icon aws">☁️</div>
+      <div class="cert-body">
+        <h4>Introduction to Machine Learning &amp; Projects</h4>
+        <p>Amazon Web Services (AWS)</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon nptel">🏅</div>
+      <div class="cert-body">
+        <h4>Joy of Computing with Python</h4>
+        <p>NPTEL — Elite Silver Medal</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label fade-up">07 / Achievements</div>
+  <h2 class="section-title fade-up">Recognition &amp;<br/><em style="font-family:var(--serif);font-style:italic;color:var(--accent2)">highlights</em></h2>
+  <div class="ach-list fade-up" style="margin-top:2rem">
+    <div class="ach-item">
+      <div class="ach-bullet">🏆</div>
+      <p>Qualified National Talent Search Exam (NTSE) Stage I, hosted by Government of India — one of India's most competitive national scholarships.</p>
+    </div>
+    <div class="ach-item">
+      <div class="ach-bullet">🎖️</div>
+      <p>Awarded Best Outgoing Student at B.N.S.D Shiksha Niketan Inter College in Class 10.</p>
+    </div>
+    <div class="ach-item">
+      <div class="ach-bullet">🎭</div>
+      <p>Winner in Street Play competition at Jain University and Bits Pilani Goa (Oasis) — writer, director, and actor across performances in Bangalore and across India.</p>
+    </div>
+    <div class="ach-item">
+      <div class="ach-bullet">💻</div>
+      <p>Solved 400+ problems on GeeksForGeeks. Active on HackerRank with verified coding certifications.</p>
+    </div>
+    <div class="ach-item">
+      <div class="ach-bullet">🌿</div>
+      <p>NSS Volunteer at RVCE — participated in Plog Run and Ustarga Marathon, contributing to social and environmental initiatives.</p>
+    </div>
+    <div class="ach-item">
+      <div class="ach-bullet">🤝</div>
+      <p>Teaching Assistant at Upay NGO — taught Mathematics and English to underprivileged students, making a real difference in their learning journeys.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="inner">
+  <div class="contact-grid">
+    <div class="contact-info fade-up">
+      <div class="section-label">08 / Contact</div>
+      <h2>Let's build<br/><em style="font-family:var(--serif);font-style:italic;color:var(--accent2)">something</em></h2>
+      <p>Whether you're hiring, collaborating, or just want to connect — my inbox is always open. I'd love to hear from you.</p>
+      <div class="contact-links">
+        <a href="mailto:akv09072002@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉️</span>
+          akv09072002@gmail.com
+        </a>
+        <a href="tel:+918090743945" class="contact-link">
+          <span class="contact-link-icon">📱</span>
+          +91 8090743945
+        </a>
+        <a href="https://www.linkedin.com/in/abhinavverma09" target="_blank" class="contact-link">
+          <span class="contact-link-icon">in</span>
+          linkedin.com/in/abhinavverma09
+        </a>
+        <a href="https://github.com/abhinav09072002" target="_blank" class="contact-link">
+          <span class="contact-link-icon">⌥</span>
+          github.com/abhinav09072002
+        </a>
+      </div>
+    </div>
+    <div class="fade-up">
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Your name" required/>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="5" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send message →</button>
+      </form>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2024 Abhinav Verma. Crafted with care.</span>
+  <div class="footer-socials">
+    <a href="https://github.com/abhinav09072002" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/abhinavverma09" target="_blank">LinkedIn</a>
+    <a href="mailto:akv09072002@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+// Loader
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('hide'),800)
+})
+
+// Sticky nav
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',scrollY>50)
+})
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open')
+})
+
+// Close nav on link click
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.remove('open')
+}))
+
+// Fade-up on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})
+},{threshold:.12})
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el))
+
+// Form handler
+function handleForm(e){
+  e.preventDefault()
+  const btn=e.target.querySelector('.form-submit')
+  btn.textContent='Sent! ✓'
+  btn.style.background='#1D9E75'
+  setTimeout(()=>{btn.textContent='Send message →';btn.style.background='';e.target.reset()},3000)
+}
+
+// Download resume (opens PDF if present)
+function downloadResume(){
+  const link = document.createElement('a')
+  link.href = 'resume.pdf'
+  link.download = 'Abhinav_Verma_Resume.pdf'
+  link.click()
+}
+</script>
+</body>
+</html>
